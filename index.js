@@ -26,7 +26,10 @@ const getQuotes = async () => {
 
     console.log(quotes);
 
-    await browser.close();
+    await page.click(".pager > .next > a");
+
+    //await browser.close();
+
 };
 
 getQuotes();
