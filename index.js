@@ -13,12 +13,15 @@ const getQuotes = async () => {
     });
 
     const quotes = await page.evaluate(() => {
-        const quote = document.querySelector(".quote");
+        const quoteList = document.querySelectorAll(".quote");
 
-        const text = quote.querySelector(".text").innerText;
-        const author = quote.querySelector(".author").innerText;
+        return Array.from(quoteList).map((quote) => {
+            const text = quote.querySelector(".text").innerText;
+            const author = quote.querySelector(".author").innerText;
+    
+            return { text, author };
+        });
 
-        return { text, author };
     });
 
     console.log(quotes);
